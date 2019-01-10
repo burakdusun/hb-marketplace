@@ -1,0 +1,44 @@
+create_product P1 100 1000
+create_campaign C1 P1 10 20 100
+create_order P1 10
+get_product_info P1
+increase_time 1
+create_order P1 10
+get_product_info P1
+increase_time 1
+create_order P1 9
+get_product_info P1
+increase_time 1
+create_order P1 11
+get_product_info P1
+increase_time 1
+create_order P1 8
+get_product_info P1
+increase_time 1
+create_order P1 12
+get_product_info P1
+create_product P2 100 100
+create_order P2 50
+get_product_info P2
+create_order P2 10
+create_campaign C2 P2 10 20 100
+get_product_info P2
+create_order P2 3
+get_product_info P2
+increase_time 1
+get_product_info P2
+create_order P1 10
+get_product_info P1
+increase_time 1
+create_order P1 11
+get_product_info P1
+increase_time 1
+create_order P1 9
+get_product_info P1
+increase_time 1
+create_order P1 10
+get_product_info P1
+increase_time 1
+get_product_info P1
+increase_time 1
+get_campaign_info C1
