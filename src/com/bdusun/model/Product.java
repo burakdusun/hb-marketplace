@@ -56,6 +56,10 @@ public class Product {
         }
     }
 
+    public void resetPrice() {
+        this.price = initialPrice;
+    }
+
     public void decreaseStock(long stock) {
         this.stock = this.stock - stock;
     }

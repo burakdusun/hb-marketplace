@@ -23,9 +23,11 @@ public class IncreaseTimeCommand extends BaseCommand {
         List<Campaign> campaignList = scenarioContext.getActiveCampaignList();
         for (Campaign campaign : campaignList) {
             campaign.updateCampaign(elapsedTimeInHour);
+            Product product = scenarioContext.getProduct(campaign.getProductCode());
             if (campaign.isActive()) {
-                Product product = scenarioContext.getProduct(campaign.getProductCode());
                 product.manipulatePriceByPercentage(campaign.getCurrentPriceManipulation());
+            } else {
+                product.resetPrice();
             }
         }
     }
