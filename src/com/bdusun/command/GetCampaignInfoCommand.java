@@ -16,7 +16,7 @@ public class GetCampaignInfoCommand extends BaseCommand {
         String campaignName = args[0];
         Campaign campaign = scenarioContext.getCampaign(campaignName);
         if (campaign != null) {
-            campaign.printCampainCreatedMessage();
+            campaign.printCampaignInfoMessage();
         }
     }
 

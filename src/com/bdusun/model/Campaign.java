@@ -102,11 +102,11 @@ public class Campaign {
     }
 
 
-    private void printCampaignInfoMessage() {
-        System.out.println("Campaign info; Status " + getStatusName() + ", Target Sales " + targetSalesCount + ", Total Sales " + currentSalesCount + ", Turnover " + turnover + ", AverageItemPrice " + getAverageItemPriceString());
+    public void printCampaignInfoMessage() {
+        System.out.println("Campaign " + name + " info; Status " + getStatusName() + ", Target Sales " + targetSalesCount + ", Total Sales " + currentSalesCount + ", Turnover " + turnover + ", AverageItemPrice " + getAverageItemPriceString());
     }
 
-    public void printCampainCreatedMessage() {
+    private void printCampainCreatedMessage() {
         System.out.println("Campaign created;" + " name " + name + ", product " + getProductCode() + ", duration " + duration + ", limit " + priceManipulationLimit + ", Target Sales Count " + targetSalesCount);
     }
 
