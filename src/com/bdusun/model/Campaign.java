@@ -13,7 +13,6 @@ public class Campaign {
 
     private long currentSalesCount;
     private double currentPriceManipulation;
-    private BigDecimal grossYield;
     private BigDecimal turnover;
     private BigDecimal averageItemPrice;
     private boolean isActive;
@@ -30,7 +29,6 @@ public class Campaign {
         this.targetSalesCount = targetSalesCount;
 
         currentSalesCount = 0;
-        grossYield = new BigDecimal(0);
         turnover = new BigDecimal(0);
         averageItemPrice = new BigDecimal(0);
         isActive = true;
@@ -50,9 +48,8 @@ public class Campaign {
     public void updateStatisticsAfterOrder(long quantity, BigDecimal price, BigDecimal priceMargin) {
         if (quantity > 0) {
             currentSalesCount += quantity;
-            grossYield = grossYield.add(price.multiply(BigDecimal.valueOf(quantity)));
-            turnover = turnover.add(priceMargin.multiply(BigDecimal.valueOf(quantity)));
-            averageItemPrice = grossYield.divide(BigDecimal.valueOf(quantity), RoundingMode.UP);
+            turnover = turnover.add(price.multiply(BigDecimal.valueOf(quantity)));
+            averageItemPrice = turnover.divide(BigDecimal.valueOf(quantity), RoundingMode.UP);
         }
     }
 
@@ -73,10 +70,10 @@ public class Campaign {
     private double calculatePriceManipulationPercentage() {
         double currentPercentage = currentPriceManipulation;
         double percentageMargin = 2.5 * (initialDuration - duration + 1);
-        if (currentSalesCount < targetSalesCount) {
-            if (isManipulationPercentageWithinLimit(percentageMargin)) {
-                currentPercentage = percentageMargin;
-            }
+        if (isManipulationPercentageWithinLimit(percentageMargin)) {
+            currentPercentage = percentageMargin;
+        } else {
+            currentPercentage = priceManipulationLimit;
         }
         return currentPercentage;
     }
@@ -162,10 +159,6 @@ public class Campaign {
 
     public long getCurrentSalesCount() {
         return currentSalesCount;
-    }
-
-    public BigDecimal getGrossYield() {
-        return grossYield;
     }
 
     public BigDecimal getTurnover() {

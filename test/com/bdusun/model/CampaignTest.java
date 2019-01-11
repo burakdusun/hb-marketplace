@@ -44,8 +44,7 @@ class CampaignTest {
         campaign.updateStatisticsAfterOrder(quantity, price, priceMargin);
         assertEquals(campaign.getCurrentSalesCount(), 10);
         assertEquals(campaign.getAverageItemPrice(), new BigDecimal(90));
-        assertEquals(campaign.getGrossYield(), new BigDecimal(900));
-        assertEquals(campaign.getTurnover(), new BigDecimal(100));
+        assertEquals(campaign.getTurnover(), new BigDecimal(900));
 
         quantity = 30;
         price = new BigDecimal(60);
@@ -53,8 +52,7 @@ class CampaignTest {
         campaign.updateStatisticsAfterOrder(quantity, price, priceMargin);
         assertEquals(campaign.getCurrentSalesCount(), 40);
         assertEquals(campaign.getAverageItemPrice(), new BigDecimal(90));
-        assertEquals(campaign.getGrossYield(), new BigDecimal(2700));
-        assertEquals(campaign.getTurnover(), new BigDecimal(1300));
+        assertEquals(campaign.getTurnover(), new BigDecimal(2700));
 
     }
 
@@ -66,11 +64,11 @@ class CampaignTest {
         campaign.updateCampaign(1);
         assertEquals(campaign.getCurrentPriceManipulation(), 5.0);
         assertTrue(campaign.isActive());
-        campaign.updateCampaign(7);
-        assertEquals(campaign.getCurrentPriceManipulation(), 20);
+        campaign.updateCampaign(6);
+        assertEquals(20, campaign.getCurrentPriceManipulation());
         assertTrue(campaign.isActive());
-        campaign.updateCampaign(2);
-        assertEquals(campaign.getCurrentPriceManipulation(), 20);
+        campaign.updateCampaign(3);
+        assertEquals(20, campaign.getCurrentPriceManipulation());
         assertFalse(campaign.isActive());
     }
 
